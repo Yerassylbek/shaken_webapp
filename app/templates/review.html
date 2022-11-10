@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{% block content%}
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="{{review.image_path}}" class="img-responsive">
+        </div>
+
+        <div class="col-sm-6">
+            <h4>{{format_review_title | safe}}</h4>
+            <p>{{format_review| safe }}</p>
+            {% if review.user == current_user %}
+                <a href="{{url_for('main.edit_review', id=review.id)}}"><button type="button" class="btn btn-primary">Edit</button></a>
+                <a href="{{url_for('main.delete_review', id=review.id)}}"><button type="button" class="btn btn-danger">Delete</button></a>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{%endblock%}

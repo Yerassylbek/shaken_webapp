@@ -1,0 +1,12 @@
+{% extends 'bootstrap/base.html'%}
+<!-- Navbar block  --> 
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{%block styles%}
+    {{super()}}
+    <!-- importing simplemde css and js files -->
+    {{simplemde.css}}
+    {{simplemde.js}}
+{%endblock%}

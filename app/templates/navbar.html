@@ -1,0 +1,43 @@
+<div class="navbar navbar-inverse fixed-top" role="navigation" style="border-radius: 0">
+    <div class="container-fluid">
+<!--        <div class="navbar-header">-->
+<!--&lt;!&ndash;            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="sr-only">Toggle navigation</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="icon-bar"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="icon-bar"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;                <span class="icon-bar"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;            </button>&ndash;&gt;-->
+<!--            <a class="navbar-brand" href="/">-->
+<!--                <img src="{{url_for('static', filename='photos/photographic-film.png')}}" width="30" height="30" class="d-inline-block align-text-top" alt="l"/>-->
+<!--                SHAKEN-->
+<!--            </a>-->
+<!--        </div>-->
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a class="" href="/">
+                <img src="{{url_for('static', filename='photos/photographic-film.png')}}" width="25" height="25" class="d-inline-block align-text-top" alt="l"/>
+
+            </a></li>
+                <li class="pt-3"><a href="">SHAKEN</a></li>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {%if current_user.is_authenticated%}
+                    <li style="color:white">
+                        {%if current_user.profile_pic_path%}
+                        <img src="{{url_for('static', filename = current_user.profile_pic_path)}}" alt="dp" style="border-radius:50%" width = "40" height="40"
+                        style="margin-top: 10px;">
+                    </li>
+                    <li>
+                        {%endif%}
+                        <a href="{{url_for('main.profile', uname = current_user.username)}}">{{current_user.username}}</a>
+                    </li>
+                    <li><a href="{{url_for('auth.logout')}}">Logout</a></li>
+                {%else%}
+                    <li><a href="{{url_for('auth.login')}}" style="color: #fff;">Sign In</a></li>
+                {%endif%}
+            </ul>
+        </div>
+    </div>
+</div>
